@@ -5,6 +5,37 @@
 	<artifactId>zmaven</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+
+	<properties>
+		<version-commons-lang>2.6</version-commons-lang>
+		<version-poi>3.9</version-poi>
+	</properties>
+
+	<dependencies>
+
+	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<!-- poi -->
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi</artifactId>
+				<version>${version-poi}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>${version-poi}</version>
+			</dependency>
+			<!-- 工具 -->
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${version-commons-lang}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<build>
 		<plugins>
 			<plugin>
