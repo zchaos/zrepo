@@ -3,7 +3,6 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>zsource</groupId>
 	<artifactId>zsource</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 
 	<parent>
 		<groupId>zmaven</groupId>
