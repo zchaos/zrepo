@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: zplugins
+Bundle-SymbolicName: zplugins;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: ZCHAOS
+Bundle-Activator: com.zchaos.zplugins.Activator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources,
+ org.eclipse.jdt.core,
+ org.eclipse.jdt.ui
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
