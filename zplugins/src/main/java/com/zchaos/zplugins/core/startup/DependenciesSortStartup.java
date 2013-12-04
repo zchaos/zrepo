@@ -1,10 +1,10 @@
-package com.zchaos.zplugins.startup;
+package com.zchaos.zplugins.core.startup;
 
 import org.eclipse.ui.IStartup;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.PlatformUI;
 
-import com.zchaos.zplugins.components.dependencies.sort.DependenciesSort;
+import com.zchaos.zplugins.internal.dependencies.sort.DependenciesSort;
 
 public class DependenciesSortStartup implements IStartup {
 

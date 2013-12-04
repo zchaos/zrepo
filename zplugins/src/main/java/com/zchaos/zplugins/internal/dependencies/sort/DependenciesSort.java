@@ -1,4 +1,4 @@
-package com.zchaos.zplugins.components.dependencies.sort;
+package com.zchaos.zplugins.internal.dependencies.sort;
 
 import org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart;
 import org.eclipse.jdt.ui.JavaElementComparator;

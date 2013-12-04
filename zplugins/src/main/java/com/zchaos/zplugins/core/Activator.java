@@ -1,4 +1,4 @@
-package com.zchaos.zplugins;
+package com.zchaos.zplugins.core;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -10,11 +10,11 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "com.zchaos.test1"; //$NON-NLS-1$
+	public static final String PLUGIN_ID = "com.zchaos.zplugins"; //$NON-NLS-1$
 
 	// The shared instance
 	private static Activator plugin;
-	
+
 	/**
 	 * The constructor
 	 */

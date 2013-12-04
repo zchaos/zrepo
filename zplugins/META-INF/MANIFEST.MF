@@ -4,7 +4,7 @@ Bundle-Name: zplugins
 Bundle-SymbolicName: zplugins;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: ZCHAOS
-Bundle-Activator: com.zchaos.zplugins.Activator
+Bundle-Activator: com.zchaos.zplugins.core.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.core.resources,

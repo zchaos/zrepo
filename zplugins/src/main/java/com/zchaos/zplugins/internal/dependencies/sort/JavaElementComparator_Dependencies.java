@@ -1,4 +1,4 @@
-package com.zchaos.zplugins.components.dependencies.sort;
+package com.zchaos.zplugins.internal.dependencies.sort;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.jdt.internal.core.JarPackageFragmentRoot;

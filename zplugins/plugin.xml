@@ -18,7 +18,7 @@
          <action
                label="&amp;Sample Action"
                icon="icons/sample.gif"
-               class="com.zchaos.zplugins.actions.SampleAction"
+               class="com.zchaos.zplugins.core.actions.SampleAction"
                tooltip="Zplugins"
                menubarPath="zchaosMenu/zchaosGroup"
                toolbarPath="zchaosGroup"
@@ -29,7 +29,7 @@
    <extension
          point="org.eclipse.ui.startup">
       <startup
-            class="com.zchaos.zplugins.startup.DependenciesSortStartup">
+            class="com.zchaos.zplugins.core.startup.DependenciesSortStartup">
       </startup>
    </extension>
 

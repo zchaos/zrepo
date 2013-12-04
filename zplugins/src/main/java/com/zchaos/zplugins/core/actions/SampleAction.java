@@ -1,11 +1,11 @@
-package com.zchaos.zplugins.actions;
+package com.zchaos.zplugins.core.actions;
 
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 
-import com.zchaos.zplugins.components.dependencies.sort.DependenciesSort;
+import com.zchaos.zplugins.internal.dependencies.sort.DependenciesSort;
 
 /**
  * Our sample action implements workbench action delegate. The action proxy will
