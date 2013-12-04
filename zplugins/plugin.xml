@@ -7,7 +7,7 @@
       <actionSet
             label="zchaos Action Set"
             visible="true"
-            id="com.zchaos.zplugins.actionSet">
+            id="com.zchaos.zplugins.core.actionSet">
          <menu
                label="zchaos"
                id="zchaosMenu">
@@ -22,7 +22,7 @@
                tooltip="Zplugins"
                menubarPath="zchaosMenu/zchaosGroup"
                toolbarPath="zchaosGroup"
-               id="com.zchaos.zplugins.actions.SampleAction">
+               id="com.zchaos.zplugins.core.actions.SampleAction">
          </action>
       </actionSet>
    </extension>
