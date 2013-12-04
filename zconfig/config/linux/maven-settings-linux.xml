@@ -2,7 +2,7 @@
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
  http://maven.apache.or g/xsd/settin gs-1.0.0.xsd ">
-<localRepository>/Volumes/mss/env/dev/zchaos/user/m2/repository</localRepository>
+<localRepository>/ss/env/dev/indigo/user/m2/repository</localRepository>
 <interactiveMode/>
 <usePluginRegistry/>
 <offline/>
