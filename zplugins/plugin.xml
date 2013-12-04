@@ -9,7 +9,7 @@
             visible="true"
             id="com.zchaos.zplugins.actionSet">
          <menu
-               label="zchaos &amp;Menu"
+               label="zchaos"
                id="zchaosMenu">
             <separator
                   name="zchaosGroup">
@@ -25,6 +25,12 @@
                id="com.zchaos.zplugins.actions.SampleAction">
          </action>
       </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="com.zchaos.zplugins.startup.DependenciesSortStartup">
+      </startup>
    </extension>
 
 </plugin>
