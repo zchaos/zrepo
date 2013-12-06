@@ -1,0 +1,48 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+ http://maven.apache.or g/xsd/settin gs-1.0.0.xsd ">
+<localRepository>/ss/env/dev/juno/user/m2/repository</localRepository>
+<interactiveMode/>
+<usePluginRegistry/>
+<offline/>
+<pluginGroups/>
+
+<servers>
+	<!-- 发布bundle到maven仓库时需要用户名和密码，这个账户是不能存放在pom.xml中的，只能放在这里。
+		服务器succez.nexus的地址是：http://cc:8081/nexus/content/repositories/test/，在pom.xml中定义。
+		20111227 按照maven的规范，发布的时候分为发布正式包和快照包，这2个应该是不同的仓库（仓库的url不同）
+	 -->
+    <server>
+        <id>zrepo</id>
+        <username>admin</username>
+        <password>admin123</password>
+    </server>
+</servers>
+<mirrors/>
+  <profiles>
+    <profile>
+      <id>repository</id>
+		<repositories>
+			<!-- 这是cc上面的正式库，里面的包都是第三方的稳定包 -->
+			<repository>
+				<id>zrepo</id>
+				<name>zrepo</name>
+				<url>http://localhost:8082/nexus/content/groups/zrepo/</url>
+				<layout>default</layout>
+				<releases>
+					<enabled>true</enabled>
+					<updatePolicy>never</updatePolicy>
+					<checksumPolicy>warn</checksumPolicy>
+				</releases>
+				<snapshots>
+					<enabled>false</enabled>
+				</snapshots>
+			</repository>
+		</repositories>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>repository</activeProfile>
+  </activeProfiles>
+</settings>
