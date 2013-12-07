@@ -5,6 +5,6 @@ package com.zchaos.zutil.datagrid;
  * @author zhuchx
  *
  */
-public class DataGridHeadCell {
-
+public interface DataGridHeadCell {
+	public String getValue();
 }

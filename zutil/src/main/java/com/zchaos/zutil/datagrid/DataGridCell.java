@@ -5,14 +5,6 @@ package com.zchaos.zutil.datagrid;
  * @author zhuchx
  *
  */
-public class DataGridCell {
-	private String value;
-
-	public DataGridCell(String value) {
-		this.value = value;
-	}
-
-	public String getValue() {
-		return this.value;
-	}
+public interface DataGridCell {
+	public String getValue();
 }

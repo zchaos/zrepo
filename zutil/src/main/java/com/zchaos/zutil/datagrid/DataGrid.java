@@ -5,25 +5,12 @@ package com.zchaos.zutil.datagrid;
  * @author zhuchx
  *
  */
-public class DataGrid {
-	private DataGridHeadRow leftRow;
+public interface DataGrid {
+	public int getRowCount();
 
-	private DataGridHeadRow rightRow;
+	public int getColCount();
 
-	private DataGridHeadCol topCol;
+	public void addCell(int row, int col, DataGridCell cell);
 
-	private DataGridHeadCol bottomCol;
-
-	private DataGridCell[][] cells;
-
-	private int rowcount;
-
-	private int colcount;
-
-	public DataGrid(int rowcount, int colcount) {
-		this.rowcount = rowcount;
-		this.colcount = colcount;
-
-		cells = new DataGridCell[rowcount][colcount];
-	}
+	public DataGridCell getCell(int row, int col);
 }

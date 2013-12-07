@@ -1,41 +1,50 @@
 package com.zchaos.zutil.datagrid.dynamic;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.zchaos.zutil.datagrid.DataGrid;
 import com.zchaos.zutil.datagrid.DataGridCell;
-import com.zchaos.zutil.datagrid.DataGridHeadCell;
-import com.zchaos.zutil.datagrid.DataGridHeadCol;
-import com.zchaos.zutil.datagrid.DataGridHeadRow;
+import com.zchaos.zutil.datagrid.util.DataGridListDynamic;
 
 /**
  * 动态构建数据表格
  * @author zhuchx
  *
  */
-public class DataGridDynamic {
-	private DataGridHeadCol headObjs = new DataGridHeadCol();
+public class DataGridDynamic implements DataGrid {
+	//	private DataGridHeadDynamic leftHead = new DataGridHeadDynamic();
+	//
+	//	private DataGridHeadDynamic topHead = new DataGridHeadDynamic();
+	//
+	//	private DataGridHeadDynamic rightHead = new DataGridHeadDynamic();
+	//
+	//	private DataGridHeadDynamic bottomHead = new DataGridHeadDynamic();
 
-	private List<DataGridHeadRow> rowObjs = new ArrayList<DataGridHeadRow>();
-
-	public void addHeadCell(int col, DataGridHeadCell headCell) {
-		headObjs.addHeadCell(col, headCell);
-	}
+	private DataGridListDynamic<DataGridListDynamic<DataGridCell>> cells = new DataGridListDynamic<DataGridListDynamic<DataGridCell>>();
 
 	public void addCell(int row, int col, DataGridCell cell) {
-		DataGridHeadRow rowObj = getRow(row);
-		rowObj.addCell(col, cell);
+		DataGridListDynamic<DataGridCell> list = cells.get(row);
+		if (list == null) {
+			list = new DataGridListDynamic<DataGridCell>();
+			cells.set(row, list);
+		}
+		list.set(col, cell);
 	}
 
-	private DataGridHeadRow getRow(int row) {
-		DataGridHeadRow rowObj = null;
-		if (row < rowObjs.size()) {
-			rowObj = rowObjs.get(row);
+	public DataGridCell getCell(int row, int col) {
+		DataGridListDynamic<DataGridCell> list = cells.get(row);
+		return list == null ? null : list.get(col);
+	}
+
+	public int getRowCount() {
+		return cells.size();
+	}
+
+	public int getColCount() {
+		int rowcount = cells.size();
+		int colcount = 0;
+		for (int i = 0; i < rowcount; i++) {
+			DataGridListDynamic<DataGridCell> list = cells.get(i);
+			colcount = Math.max(colcount, list == null ? 0 : list.size());
 		}
-		if (rowObj == null) {
-			rowObj = new DataGridHeadRow();
-			rowObjs.set(row, rowObj);
-		}
-		return rowObj;
+		return colcount;
 	}
 }

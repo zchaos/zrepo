@@ -2,8 +2,11 @@ package com.zchaos.zutil.excel;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringWriter;
 
 import com.zchaos.zutil.datagrid.DataGrid;
+import com.zchaos.zutil.datagrid.impl.DataGridImpl;
+import com.zchaos.zutil.datagrid.util.DataGridUtil;
 
 public class TestExcelReader {
 	public static void main(String[] args) throws IOException {
@@ -16,6 +19,7 @@ public class TestExcelReader {
 		InputStream in = TestExcelReader.class.getResourceAsStream(path);
 		try {
 			DataGrid dataGrid = ExcelReader.excel2DataGrid(in, ext);
+			DataGridUtil.printDataGrid(dataGrid);
 		}
 		finally {
 			in.close();
@@ -28,6 +32,7 @@ public class TestExcelReader {
 		InputStream in = TestExcelReader.class.getResourceAsStream(path);
 		try {
 			DataGrid dataGrid = ExcelReader.excel2DataGrid(in, ext);
+			DataGridUtil.printDataGrid(dataGrid);
 		}
 		finally {
 			in.close();

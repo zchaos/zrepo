@@ -15,7 +15,9 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.zchaos.zutil.datagrid.DataGrid;
-import com.zchaos.zutil.datagrid.DataGridCell;
+import com.zchaos.zutil.datagrid.dynamic.DataGridDynamic;
+import com.zchaos.zutil.datagrid.impl.DataGridCellImpl;
+import com.zchaos.zutil.datagrid.util.DataGridUtil;
 
 /**
  * 读取excel文件
@@ -62,22 +64,31 @@ public class ExcelReader {
 	}
 
 	public static DataGrid workBook2DataGrid(Workbook workBook) throws IOException {
-		DataGrid dataGrid = new DataGrid();
+		DataGridDynamic dataGrid = new DataGridDynamic();
 
 		int len = workBook.getNumberOfSheets();
 		for (int i = 0; i < len; i++) {
 			Sheet sheet = workBook.getSheetAt(i);
 			sheet2DataGrid(dataGrid, sheet);
 		}
-		return dataGrid;
+		return DataGridUtil.toFixed(dataGrid);
 	}
 
-	public static void sheet2DataGrid(DataGrid dataGrid, Sheet sheet) throws IOException {
+	public static void sheet2DataGrid(DataGridDynamic dataGrid, Sheet sheet) throws IOException {
 		int startRow = sheet.getFirstRowNum();
 		int endRow = sheet.getLastRowNum();
 
-		//int leftCol = sheet.getLeftCol();
-		for (int i = startRow; i < endRow; i++) {
+		int col = -1;//有数据的行中，最小的列好
+		for (int i = startRow; i <= endRow; i++) {
+			short startCol = sheet.getRow(i).getFirstCellNum();
+			if (col < 0) {
+				col = startCol;
+			}
+			else {
+				col = Math.min(col, startCol);
+			}
+		}
+		for (int i = startRow; i <= endRow; i++) {
 			Row row = sheet.getRow(i);
 			short startCol = row.getFirstCellNum();
 			short endCol = row.getLastCellNum();
@@ -86,9 +97,9 @@ public class ExcelReader {
 				Cell cell = row.getCell(j);
 				String value = sheet2DataGrid(cell);
 
-				DataGridCell dataGridCell = new DataGridCell(value);
+				DataGridCellImpl dataGridCell = new DataGridCellImpl(value);
 
-				dataGrid.addCell(i - startRow, j - startCol, dataGridCell);
+				dataGrid.addCell(i - startRow, j - col, dataGridCell);
 			}
 		}
 	}

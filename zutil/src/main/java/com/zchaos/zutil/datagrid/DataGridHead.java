@@ -1,16 +1,10 @@
 package com.zchaos.zutil.datagrid;
 
-public abstract class DataGridHead {
-	private DataGridHeadCell[] cells;
-
-	public DataGridHead(int count) {
-		cells = new DataGridHeadCell[count];
-	}
-
-	protected void addCell(int index, DataGridHeadCell headCell) {
-		cells[index] = headCell;
-	}
-
-	public abstract void addHeadCell(int index, DataGridHeadCell headCell);
-
+/**
+ * 表格行头。行头可以在左边，右边，上边和下边
+ * @author zhuchx
+ *
+ */
+public interface DataGridHead {
+	public DataGridHeadCell getCell(int index);
 }
