@@ -1,17 +1,16 @@
 package com.zchaos.zutil.datagrid;
 
-import java.util.ArrayList;
-import java.util.List;
+public abstract class DataGridHead {
+	private DataGridHeadCell[] cells;
 
-/**
- * 数据列头，数据列中的数据是DataGridHeadCell
- * @author zhuchx
- *
- */
-public class DataGridHead {
-	private List<DataGridHeadCell> cells = new ArrayList<DataGridHeadCell>();
-
-	public void addHeadCell(int col, DataGridHeadCell headCell) {
-		cells.set(col, headCell);
+	public DataGridHead(int count) {
+		cells = new DataGridHeadCell[count];
 	}
+
+	protected void addCell(int index, DataGridHeadCell headCell) {
+		cells[index] = headCell;
+	}
+
+	public abstract void addHeadCell(int index, DataGridHeadCell headCell);
+
 }

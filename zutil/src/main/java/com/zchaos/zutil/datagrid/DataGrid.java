@@ -1,36 +1,29 @@
 package com.zchaos.zutil.datagrid;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 数据表格。包括数据行DataGridRow和数据列DataGridCol。数据行和数据列中的元素是DataGridCell
  * @author zhuchx
  *
  */
 public class DataGrid {
-	private DataGridHead headObjs = new DataGridHead();
+	private DataGridHeadRow leftRow;
 
-	private List<DataGridRow> rowObjs = new ArrayList<DataGridRow>();
+	private DataGridHeadRow rightRow;
 
-	public void addHeadCell(int col, DataGridHeadCell headCell) {
-		headObjs.addHeadCell(col, headCell);
-	}
+	private DataGridHeadCol topCol;
 
-	public void addCell(int row, int col, DataGridCell cell) {
-		DataGridRow rowObj = getRow(row);
-		rowObj.addCell(col, cell);
-	}
+	private DataGridHeadCol bottomCol;
 
-	private DataGridRow getRow(int row) {
-		DataGridRow rowObj = null;
-		if (row < rowObjs.size()) {
-			rowObj = rowObjs.get(row);
-		}
-		if (rowObj == null) {
-			rowObj = new DataGridRow();
-			rowObjs.set(row, rowObj);
-		}
-		return rowObj;
+	private DataGridCell[][] cells;
+
+	private int rowcount;
+
+	private int colcount;
+
+	public DataGrid(int rowcount, int colcount) {
+		this.rowcount = rowcount;
+		this.colcount = colcount;
+
+		cells = new DataGridCell[rowcount][colcount];
 	}
 }
