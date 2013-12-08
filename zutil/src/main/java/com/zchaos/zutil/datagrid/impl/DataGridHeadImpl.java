@@ -4,13 +4,13 @@ import com.zchaos.zutil.datagrid.DataGridHead;
 import com.zchaos.zutil.datagrid.DataGridHeadCell;
 
 public class DataGridHeadImpl implements DataGridHead {
-	private DataGridHeadCellImpl[] cells;
+	private DataGridHeadCell[] cells;
 
 	public DataGridHeadImpl(int count) {
-		cells = new DataGridHeadCellImpl[count];
+		cells = new DataGridHeadCell[count];
 	}
 
-	public void addCell(int index, DataGridHeadCellImpl headCell) {
+	public void addCell(int index, DataGridHeadCell headCell) {
 		cells[index] = headCell;
 	}
 
