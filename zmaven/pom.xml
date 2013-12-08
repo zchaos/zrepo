@@ -47,6 +47,11 @@
 				<artifactId>zdependencies-swt</artifactId>
 				<version>${version-zdependencies}</version>
 			</dependency>
+			<dependency>
+				<groupId>zutil</groupId>
+				<artifactId>zutil</artifactId>
+				<version>${version-zdependencies}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 

@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
@@ -14,10 +13,13 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.zchaos.zutil.FileUtils;
+import com.zchaos.zutil.StringUtils;
 import com.zchaos.zutil.datagrid.DataGrid;
 import com.zchaos.zutil.datagrid.dynamic.DataGridDynamic;
 import com.zchaos.zutil.datagrid.impl.DataGridCellImpl;
 import com.zchaos.zutil.datagrid.util.DataGridUtil;
+import com.zchaos.zutil.datasource.FileDataSource;
 
 /**
  * 读取excel文件
@@ -25,6 +27,21 @@ import com.zchaos.zutil.datagrid.util.DataGridUtil;
  *
  */
 public class ExcelReader {
+	public static final String EXT_XLS = ".xls";
+
+	public static final String EXT_XLSX = ".xlsx";
+
+	public static DataGrid excel2DataGrid(FileDataSource fileDataSource) throws IOException {
+		String ext = FileUtils.getExt(fileDataSource.getPath());
+		InputStream in = fileDataSource.getStream();
+		try {
+			return excel2DataGrid(in, ext);
+		}
+		finally {
+			in.close();
+		}
+	}
+
 	public static DataGrid excel2DataGrid(InputStream in, String ext) throws IOException {
 		Workbook workBook = createWorkBook(in, ext);
 		return workBook2DataGrid(workBook);
@@ -37,14 +54,27 @@ public class ExcelReader {
 	 * @throws IOException
 	 */
 	public static Workbook createWorkBook(String path) throws IOException {
-		if (org.apache.commons.lang.StringUtils.isBlank(path)) {
+		String ext = FileUtils.getExt(path);
+		if (StringUtils.isBlank(path)) {
 			throw new IllegalArgumentException("参数错误!!!");
 		}
-		if (StringUtils.endsWithIgnoreCase(path, ".xls")) {
-			return new HSSFWorkbook(new FileInputStream(path));
+		if (StringUtils.equalsIgnoreCase(ext, EXT_XLS)) {
+			FileInputStream in = new FileInputStream(path);
+			try {
+				return new HSSFWorkbook(in);
+			}
+			finally {
+				in.close();
+			}
 		}
-		else if (StringUtils.endsWithIgnoreCase(path, ".xlsx")) {
-			return new XSSFWorkbook(new FileInputStream(path));
+		else if (StringUtils.equalsIgnoreCase(ext, EXT_XLSX)) {
+			FileInputStream in = new FileInputStream(path);
+			try {
+				return new XSSFWorkbook(in);
+			}
+			finally {
+				in.close();
+			}
 		}
 		else {
 			throw new IllegalArgumentException("不支持除：xls/xlsx以外的文件格式!!!");
@@ -52,11 +82,45 @@ public class ExcelReader {
 	}
 
 	public static Workbook createWorkBook(InputStream in, String ext) throws IOException {
-		if (StringUtils.equalsIgnoreCase(ext, "xls")) {
+		if (StringUtils.equalsIgnoreCase(ext, EXT_XLS)) {
 			return new HSSFWorkbook(in);
 		}
-		else if (StringUtils.equalsIgnoreCase(ext, "xlsx")) {
+		else if (StringUtils.equalsIgnoreCase(ext, EXT_XLSX)) {
 			return new XSSFWorkbook(in);
+		}
+		else {
+			throw new IllegalArgumentException("不支持除：xls/xlsx以外的文件格式!!!");
+		}
+	}
+
+	/**
+	 * 生成excel的workbook
+	 * @param path
+	 * @return
+	 * @throws IOException
+	 */
+	public static Workbook createWorkBook(String path, Class<?> clazz) throws IOException {
+		String ext = FileUtils.getExt(path);
+		if (StringUtils.isBlank(path)) {
+			throw new IllegalArgumentException("参数错误!!!");
+		}
+		if (StringUtils.equalsIgnoreCase(ext, EXT_XLS)) {
+			InputStream in = clazz.getResourceAsStream(path);
+			try {
+				return new HSSFWorkbook(in);
+			}
+			finally {
+				in.close();
+			}
+		}
+		else if (StringUtils.equalsIgnoreCase(ext, EXT_XLSX)) {
+			InputStream in = clazz.getResourceAsStream(path);
+			try {
+				return new XSSFWorkbook(in);
+			}
+			finally {
+				in.close();
+			}
 		}
 		else {
 			throw new IllegalArgumentException("不支持除：xls/xlsx以外的文件格式!!!");
@@ -74,27 +138,58 @@ public class ExcelReader {
 		return DataGridUtil.toFixed(dataGrid);
 	}
 
-	public static void sheet2DataGrid(DataGridDynamic dataGrid, Sheet sheet) throws IOException {
+	/**
+	 * 获得sheet的数据范围
+	 * @param dataGrid
+	 * @param sheet
+	 * @throws IOException
+	 */
+	/**
+	 * 获得sheet的数据范围
+	 * @param sheet
+	 * @return 数组中的元素分别表示
+	 * 		0:起始行号
+	 * 		1:起始列号
+	 * 		2:行数
+	 * 		3:列数
+	 * @throws IOException
+	 */
+	public static ExcelDataRect getSheetRect(Sheet sheet) throws IOException {
 		int startRow = sheet.getFirstRowNum();
 		int endRow = sheet.getLastRowNum();
+		int rowcount = endRow - startRow + 1;
 
-		int col = -1;//有数据的行中，最小的列好
-		for (int i = startRow; i <= endRow; i++) {
-			short startCol = sheet.getRow(i).getFirstCellNum();
-			if (col < 0) {
-				col = startCol;
-			}
-			else {
-				col = Math.min(col, startCol);
-			}
-		}
+		int mincol = -1;//有数据的行中，最小的列号
+		int maxcol = 0;//有数据的行中，最大的列号
 		for (int i = startRow; i <= endRow; i++) {
 			Row row = sheet.getRow(i);
 			short startCol = row.getFirstCellNum();
 			short endCol = row.getLastCellNum();
+			if (mincol < 0) {
+				mincol = startCol;
+			}
+			else {
+				mincol = Math.min(mincol, startCol);
+			}
+			maxcol = Math.max(maxcol, endCol);
+		}
+		int colcount = maxcol - mincol;
+		return new ExcelDataRect(startRow, mincol, rowcount, colcount);
+	}
+
+	public static void sheet2DataGrid(DataGridDynamic dataGrid, Sheet sheet) throws IOException {
+		ExcelDataRect rect = getSheetRect(sheet);
+		int startRow = rect.getRow();
+		int col = rect.getCol();
+		int endRow = startRow + rect.getRowCount();
+
+		for (int i = startRow; i < endRow; i++) {
+			Row sheetRow = sheet.getRow(i);
+			short startCol = sheetRow.getFirstCellNum();
+			short endCol = sheetRow.getLastCellNum();
 
 			for (int j = startCol; j < endCol; j++) {
-				Cell cell = row.getCell(j);
+				Cell cell = sheetRow.getCell(j);
 				String value = sheet2DataGrid(cell);
 
 				DataGridCellImpl dataGridCell = new DataGridCellImpl(value);

@@ -23,5 +23,9 @@
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>zutil</groupId>
+			<artifactId>zutil</artifactId>
+		</dependency>
 	</dependencies>
 </project>
