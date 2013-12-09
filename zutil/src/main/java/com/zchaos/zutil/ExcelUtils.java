@@ -1,4 +1,4 @@
-package com.zchaos.zutil.excel;
+package com.zchaos.zutil;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -13,23 +13,55 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.zchaos.zutil.FileUtils;
-import com.zchaos.zutil.StringUtils;
 import com.zchaos.zutil.datagrid.DataGrid;
 import com.zchaos.zutil.datagrid.dynamic.DataGridDynamic;
 import com.zchaos.zutil.datagrid.impl.DataGridCellImpl;
 import com.zchaos.zutil.datagrid.util.DataGridUtil;
 import com.zchaos.zutil.datasource.FileDataSource;
+import com.zchaos.zutil.excel.ExcelDataRect;
 
-/**
- * 读取excel文件
- * @author zhuchx
- *
- */
-public class ExcelReader {
+public class ExcelUtils {
 	public static final String EXT_XLS = ".xls";
 
 	public static final String EXT_XLSX = ".xlsx";
+
+	public static Workbook createWorkBook(InputStream in, String ext) throws IOException {
+		checkExt(ext);
+		if (StringUtils.equalsIgnoreCase(ext, EXT_XLS)) {
+			return new HSSFWorkbook(in);
+		}
+		else {
+			return new XSSFWorkbook(in);
+		}
+	}
+
+	public static Workbook createWorkBook(String path) throws IOException {
+		String ext = FileUtils.getExt(path);
+		InputStream in = new FileInputStream(path);
+		try {
+			return createWorkBook(in, ext);
+		}
+		finally {
+			in.close();
+		}
+	}
+
+	public static Workbook createWorkBook(String path, Class<?> clazz) throws IOException {
+		String ext = FileUtils.getExt(path);
+		InputStream in = clazz.getResourceAsStream(path);
+		try {
+			return createWorkBook(in, ext);
+		}
+		finally {
+			in.close();
+		}
+	}
+
+	public static void checkExt(String ext) throws IOException {
+		if (!StringUtils.equalsIgnoreCase(ext, EXT_XLS) && !StringUtils.equalsIgnoreCase(ext, EXT_XLSX)) {
+			throw new IllegalArgumentException("不支持除：" + EXT_XLS + "/" + EXT_XLSX + "以外的文件格式!!!");
+		}
+	}
 
 	public static DataGrid excel2DataGrid(FileDataSource fileDataSource) throws IOException {
 		String ext = FileUtils.getExt(fileDataSource.getPath());
@@ -45,86 +77,6 @@ public class ExcelReader {
 	public static DataGrid excel2DataGrid(InputStream in, String ext) throws IOException {
 		Workbook workBook = createWorkBook(in, ext);
 		return workBook2DataGrid(workBook);
-	}
-
-	/**
-	 * 生成excel的workbook
-	 * @param path
-	 * @return
-	 * @throws IOException
-	 */
-	public static Workbook createWorkBook(String path) throws IOException {
-		String ext = FileUtils.getExt(path);
-		if (StringUtils.isBlank(path)) {
-			throw new IllegalArgumentException("参数错误!!!");
-		}
-		if (StringUtils.equalsIgnoreCase(ext, EXT_XLS)) {
-			FileInputStream in = new FileInputStream(path);
-			try {
-				return new HSSFWorkbook(in);
-			}
-			finally {
-				in.close();
-			}
-		}
-		else if (StringUtils.equalsIgnoreCase(ext, EXT_XLSX)) {
-			FileInputStream in = new FileInputStream(path);
-			try {
-				return new XSSFWorkbook(in);
-			}
-			finally {
-				in.close();
-			}
-		}
-		else {
-			throw new IllegalArgumentException("不支持除：xls/xlsx以外的文件格式!!!");
-		}
-	}
-
-	public static Workbook createWorkBook(InputStream in, String ext) throws IOException {
-		if (StringUtils.equalsIgnoreCase(ext, EXT_XLS)) {
-			return new HSSFWorkbook(in);
-		}
-		else if (StringUtils.equalsIgnoreCase(ext, EXT_XLSX)) {
-			return new XSSFWorkbook(in);
-		}
-		else {
-			throw new IllegalArgumentException("不支持除：xls/xlsx以外的文件格式!!!");
-		}
-	}
-
-	/**
-	 * 生成excel的workbook
-	 * @param path
-	 * @return
-	 * @throws IOException
-	 */
-	public static Workbook createWorkBook(String path, Class<?> clazz) throws IOException {
-		String ext = FileUtils.getExt(path);
-		if (StringUtils.isBlank(path)) {
-			throw new IllegalArgumentException("参数错误!!!");
-		}
-		if (StringUtils.equalsIgnoreCase(ext, EXT_XLS)) {
-			InputStream in = clazz.getResourceAsStream(path);
-			try {
-				return new HSSFWorkbook(in);
-			}
-			finally {
-				in.close();
-			}
-		}
-		else if (StringUtils.equalsIgnoreCase(ext, EXT_XLSX)) {
-			InputStream in = clazz.getResourceAsStream(path);
-			try {
-				return new XSSFWorkbook(in);
-			}
-			finally {
-				in.close();
-			}
-		}
-		else {
-			throw new IllegalArgumentException("不支持除：xls/xlsx以外的文件格式!!!");
-		}
 	}
 
 	public static DataGrid workBook2DataGrid(Workbook workBook) throws IOException {
