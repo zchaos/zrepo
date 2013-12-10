@@ -18,4 +18,9 @@ public class DataGridHeadImpl implements DataGridHead {
 		return cells[index];
 	}
 
+	@Override
+	public int size() {
+		return cells.length;
+	}
+
 }

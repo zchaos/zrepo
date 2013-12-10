@@ -4,10 +4,11 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
 
-import org.apache.commons.lang.StringUtils;
-
+import com.zchaos.zutil.StringUtils;
 import com.zchaos.zutil.datagrid.DataGrid;
 import com.zchaos.zutil.datagrid.DataGridCell;
+import com.zchaos.zutil.datagrid.DataGridHead;
+import com.zchaos.zutil.datagrid.DataGridHeadCell;
 import com.zchaos.zutil.datagrid.dynamic.DataGridDynamic;
 import com.zchaos.zutil.datagrid.impl.DataGridCellImpl;
 import com.zchaos.zutil.datagrid.impl.DataGridImpl;
@@ -44,6 +45,25 @@ public class DataGridUtil {
 	}
 
 	public static void writeDataGrid(DataGrid dataGrid, Writer w) throws IOException {
+		DataGridHead head = dataGrid.getTopHead();
+		if (head != null && head.size() > 0) {
+			int size = head.size();
+			for (int i = 0; i < size; i++) {
+				if (i != 0) {
+					w.write('\t');
+				}
+				DataGridHeadCell cell = head.getCell(i);
+				if (cell == null) {
+					continue;
+				}
+				String value = StringUtils.obj2str(cell.getValue());
+				if (StringUtils.isNotEmpty(value)) {
+					w.write(value);
+				}
+			}
+			w.write("\r\n");
+		}
+
 		int rowcount = dataGrid.getRowCount();
 		int colcount = dataGrid.getColCount();
 		for (int i = 0; i < rowcount; i++) {
@@ -55,7 +75,10 @@ public class DataGridUtil {
 					w.write('\t');
 				}
 				DataGridCell cell = dataGrid.getCell(i, j);
-				String value = cell.getValue();
+				if (cell == null) {
+					continue;
+				}
+				String value = StringUtils.obj2str(cell.getValue());
 				if (StringUtils.isNotEmpty(value)) {
 					w.write(value);
 				}

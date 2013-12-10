@@ -8,13 +8,13 @@ import com.zchaos.zutil.datagrid.DataGridHeadCell;
  *
  */
 public class DataGridHeadCellImpl implements DataGridHeadCell {
-	private String value;
+	private Object value;
 
-	public DataGridHeadCellImpl(String value) {
+	public DataGridHeadCellImpl(Object value) {
 		this.value = value;
 	}
 
-	public String getValue() {
+	public Object getValue() {
 		return this.value;
 	}
 }

@@ -8,13 +8,13 @@ import com.zchaos.zutil.datagrid.DataGridCell;
  *
  */
 public class DataGridCellImpl implements DataGridCell {
-	private String value;
+	private Object value;
 
-	public DataGridCellImpl(String value) {
+	public DataGridCellImpl(Object value) {
 		this.value = value;
 	}
 
-	public String getValue() {
+	public Object getValue() {
 		return this.value;
 	}
 }

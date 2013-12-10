@@ -14,27 +14,19 @@ public interface DataGrid {
 
 	public DataGridCell getCell(int row, int col);
 
-	public DataGridHeadCell getTopHeadCell(int col);
+	public DataGridHead getTopHead();
 
-	public DataGridHeadCell getBottomHeadCell(int col);
+	public DataGridHead getBottomHead();
 
-	public DataGridHeadCell getLeftHeadCell(int row);
+	public DataGridHead getLeftHead();
 
-	public DataGridHeadCell getRightHeadCell(int row);
+	public DataGridHead getRightHead();
 
-	public void addTopHeadCell(int col, DataGridHeadCell headCell);
+	public void setTopHead(DataGridHead head);
 
-	public void addBottomHeadCell(int col, DataGridHeadCell headCell);
+	public void setBottomHead(DataGridHead head);
 
-	public void addLeftHeadCell(int col, DataGridHeadCell headCell);
+	public void setLeftHead(DataGridHead head);
 
-	public void addRightHeadCell(int col, DataGridHeadCell headCell);
-
-	public boolean hasTopHead();
-
-	public boolean hasBottomHead();
-
-	public boolean hasLeftHead();
-
-	public boolean hasRightHead();
+	public void setRightHead(DataGridHead head);
 }

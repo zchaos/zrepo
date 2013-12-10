@@ -6,5 +6,5 @@ package com.zchaos.zutil.datagrid;
  *
  */
 public interface DataGridCell {
-	public String getValue();
+	public Object getValue();
 }
