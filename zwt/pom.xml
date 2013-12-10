@@ -9,4 +9,15 @@
 		<artifactId>zmaven</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>zdependencies-swt</groupId>
+			<artifactId>zdependencies-swt</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jface</groupId>
+			<artifactId>org.eclipse.jface_3.9.1.v20130725</artifactId>
+		</dependency>
+	</dependencies>
 </project>
