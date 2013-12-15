@@ -1,0 +1,51 @@
+package com.zchaos.zface.util;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.zchaos.zutil.BooleanUtils;
+
+public class ZFaceFactory {
+	public static final String SWING = "swing";
+
+	public static final String SWT = "swt";
+
+	/**
+	 * 判断是否使用swing显示界面
+	 * @return
+	 */
+	public static boolean useSwing() {
+		String prop = System.getProperty(SWING);
+		return BooleanUtils.toBoolean(prop, true);
+	}
+
+	public static boolean useSwt() {
+		String prop = System.getProperty(SWT);
+		return BooleanUtils.toBoolean(prop, true);
+	}
+
+	public static <T> List<T> createComponents(Class<T> clazz) {
+		ArrayList<T> list = new ArrayList<T>();
+		if (useSwing()) {
+			T comp = createSWINGComponent(clazz);
+			if (comp != null) {
+				list.add(comp);
+			}
+		}
+		if (useSwt()) {
+			T comp = createSWINGComponent(clazz);
+			if (comp != null) {
+				list.add(comp);
+			}
+		}
+		return list;
+	}
+
+	public static <T> T createSWTComponent(Class<T> clazz) {
+		return null;
+	}
+
+	public static <T> T createSWINGComponent(Class<T> clazz) {
+		return null;
+	}
+}
