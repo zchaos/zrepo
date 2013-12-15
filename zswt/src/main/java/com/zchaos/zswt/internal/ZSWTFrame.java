@@ -11,10 +11,21 @@ public class ZSWTFrame implements ZIFrame, ZISWTContainer {
 
 	public ZSWTFrame() {
 		shell = new Shell(ZSWTUtils.getShell(), ZSWTUtils.getDefaultStyle());
+		shell.setText("swt");
 	}
 
 	@Override
 	public void setTitle(String title) {
 		shell.setText(title);
+	}
+
+	@Override
+	public void show() {
+		shell.setVisible(true);
+	}
+
+	@Override
+	public void setSize(int width, int height) {
+		shell.setSize(width, height);
 	}
 }

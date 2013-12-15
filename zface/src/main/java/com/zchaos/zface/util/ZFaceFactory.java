@@ -40,7 +40,7 @@ public class ZFaceFactory {
 			}
 		}
 		if (useSwt()) {
-			T comp = createSWINGComponent(clazz);
+			T comp = createSWTComponent(clazz);
 			if (comp != null) {
 				list.add(comp);
 			}

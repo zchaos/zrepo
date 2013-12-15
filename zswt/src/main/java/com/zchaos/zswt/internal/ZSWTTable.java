@@ -12,4 +12,10 @@ public class ZSWTTable implements ZITable, ZISWTContainer {
 	public ZSWTTable() {
 		table = new Table(ZSWTUtils.getShell(), ZSWTUtils.getDefaultStyle());
 	}
+
+	@Override
+	public void setSize(int width, int height) {
+		// TODO Auto-generated method stub
+
+	}
 }

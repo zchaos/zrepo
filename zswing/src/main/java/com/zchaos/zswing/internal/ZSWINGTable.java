@@ -11,4 +11,10 @@ public class ZSWINGTable implements ZITable, ZISWINGContainer {
 	public ZSWINGTable() {
 		table = new JTable();
 	}
+
+	@Override
+	public void setSize(int width, int height) {
+		// TODO Auto-generated method stub
+
+	}
 }

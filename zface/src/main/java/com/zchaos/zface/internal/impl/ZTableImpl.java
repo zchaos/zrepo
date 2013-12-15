@@ -1,4 +1,4 @@
-package com.zchaos.zface.internal;
+package com.zchaos.zface.internal.impl;
 
 import java.util.List;
 

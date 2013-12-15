@@ -6,4 +6,9 @@ public interface ZIFrame extends ZIContainer {
 	 * @param title
 	 */
 	public void setTitle(String title);
+
+	/**
+	 * 显示frame
+	 */
+	public void show();
 }

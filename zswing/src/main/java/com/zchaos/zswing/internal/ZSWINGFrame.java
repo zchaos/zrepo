@@ -11,6 +11,7 @@ public class ZSWINGFrame implements ZIFrame, ZISWINGContainer {
 
 	public ZSWINGFrame() {
 		frame = new JFrame();
+		frame.setTitle("swing");
 	}
 
 	@Override
@@ -18,4 +19,13 @@ public class ZSWINGFrame implements ZIFrame, ZISWINGContainer {
 		frame.setTitle(title);
 	}
 
+	@Override
+	public void show() {
+		frame.setVisible(true);
+	}
+
+	@Override
+	public void setSize(int width, int height) {
+		frame.setSize(width, height);
+	}
 }
