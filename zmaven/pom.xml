@@ -53,11 +53,6 @@
 				<version>${version-zdependencies}</version>
 			</dependency>
 			<dependency>
-				<groupId>zdependencies-swt</groupId>
-				<artifactId>zdependencies-swt</artifactId>
-				<version>${version-zdependencies}</version>
-			</dependency>
-			<dependency>
 				<groupId>zface</groupId>
 				<artifactId>zface</artifactId>
 				<version>${version-zdependencies}</version>

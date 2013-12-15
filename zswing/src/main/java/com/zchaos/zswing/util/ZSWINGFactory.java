@@ -5,27 +5,20 @@ import java.util.Map;
 
 import com.zchaos.zface.api.ZIFrame;
 import com.zchaos.zface.api.ZITable;
+import com.zchaos.zface.core.ZFactory;
 import com.zchaos.zswing.internal.ZSWINGFrame;
 import com.zchaos.zswing.internal.ZSWINGTable;
 
-public class ZSWINGFactory {
+public class ZSWINGFactory extends ZFactory {
 	private static final Map<Class<?>, Class<?>> COMPONENTS = new HashMap<Class<?>, Class<?>>();
 	static {
 		COMPONENTS.put(ZITable.class, ZSWINGTable.class);
 		COMPONENTS.put(ZIFrame.class, ZSWINGFrame.class);
 	}
 
-	@SuppressWarnings("unchecked")
-	public static <T> T createComponents(Class<T> clazz) {
-		Class<?> componentClazz = COMPONENTS.get(clazz);
-		if (componentClazz == null) {
-			return null;
-		}
-		try {
-			return (T) componentClazz.newInstance();
-		}
-		catch (InstantiationException | IllegalAccessException e) {
-			throw new RuntimeException(e);
-		}
+	@Override
+	protected Map<Class<?>, Class<?>> getComponents() {
+		return COMPONENTS;
 	}
+
 }
