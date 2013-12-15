@@ -9,4 +9,16 @@
 		<artifactId>zmaven</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>zutil</groupId>
+			<artifactId>zutil</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>zface</groupId>
+			<artifactId>zface</artifactId>
+		</dependency>
+	</dependencies>
 </project>

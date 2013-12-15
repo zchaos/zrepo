@@ -35,7 +35,7 @@ public class TableDemo {
 		new TableDemo();
 	}
 
-	private TableDemo() {
+	public TableDemo() {
 		Display display = new Display();
 		Shell shell = new Shell(display);
 		shell.setLayout(new FillLayout());
