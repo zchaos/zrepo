@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import com.zchaos.zface.api.ZIFrame;
+import com.zchaos.ziface.ZIFrame;
 
 public abstract class ZFrameImpl implements ZIFrame {
 

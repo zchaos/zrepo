@@ -2,7 +2,7 @@ package com.zchaos.zface.util;
 
 import java.util.List;
 
-import com.zchaos.zface.api.ZIFrame;
+import com.zchaos.ziface.ZIFrame;
 
 public class TestZFaceFactory {
 	public static void main(String[] args) {

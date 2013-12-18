@@ -3,13 +3,13 @@ package com.zchaos.zswt.util;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.zchaos.zface.api.ZIFrame;
-import com.zchaos.zface.api.ZITable;
-import com.zchaos.zface.core.ZFactory;
+import com.zchaos.ziface.ZIFactory;
+import com.zchaos.ziface.ZIFrame;
+import com.zchaos.ziface.ZITable;
 import com.zchaos.zswt.internal.ZSWTFrame;
 import com.zchaos.zswt.internal.ZSWTTable;
 
-public class ZSWTFactory extends ZFactory {
+public class ZSWTFactory implements ZIFactory {
 
 	private static final Map<Class<?>, Class<?>> COMPONENTS = new HashMap<Class<?>, Class<?>>();
 	static {
@@ -18,7 +18,7 @@ public class ZSWTFactory extends ZFactory {
 	}
 
 	@Override
-	protected Map<Class<?>, Class<?>> getComponents() {
+	public Map<Class<?>, Class<?>> getComponents() {
 		return COMPONENTS;
 	}
 }

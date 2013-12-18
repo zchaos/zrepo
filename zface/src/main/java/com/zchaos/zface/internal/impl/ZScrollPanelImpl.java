@@ -1,6 +1,6 @@
 package com.zchaos.zface.internal.impl;
 
-import com.zchaos.zface.api.ZIScrollPane;
+import com.zchaos.ziface.ZIScrollPane;
 
 public class ZScrollPanelImpl implements ZIScrollPane {
 

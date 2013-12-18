@@ -1,6 +1,6 @@
 package com.zchaos.zswing.core;
 
-import com.zchaos.zface.api.ZIContainer;
+import com.zchaos.ziface.ZIContainer;
 
 public interface ZISWINGContainer extends ZIContainer {
 

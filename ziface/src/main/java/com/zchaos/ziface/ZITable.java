@@ -1,4 +1,4 @@
-package com.zchaos.zface.api;
+package com.zchaos.ziface;
 
 public interface ZITable extends ZIComponent {
 

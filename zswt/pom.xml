@@ -24,8 +24,8 @@
 			<artifactId>org.eclipse.jface_3.9.1.v20130725</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>zface</groupId>
-			<artifactId>zface</artifactId>
+			<groupId>ziface</groupId>
+			<artifactId>ziface</artifactId>
 		</dependency>
 	</dependencies>
 </project>

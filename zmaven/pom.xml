@@ -53,8 +53,18 @@
 				<version>${version-zdependencies}</version>
 			</dependency>
 			<dependency>
+				<groupId>ziface</groupId>
+				<artifactId>ziface</artifactId>
+				<version>${version-zdependencies}</version>
+			</dependency>
+			<dependency>
 				<groupId>zface</groupId>
 				<artifactId>zface</artifactId>
+				<version>${version-zdependencies}</version>
+			</dependency>
+			<dependency>
+				<groupId>zswing</groupId>
+				<artifactId>zswing</artifactId>
 				<version>${version-zdependencies}</version>
 			</dependency>
 		</dependencies>

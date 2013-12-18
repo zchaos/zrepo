@@ -27,5 +27,9 @@
 			<groupId>zutil</groupId>
 			<artifactId>zutil</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>zface</groupId>
+			<artifactId>zface</artifactId>
+		</dependency>
 	</dependencies>
 </project>

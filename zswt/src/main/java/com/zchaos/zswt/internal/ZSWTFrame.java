@@ -2,7 +2,7 @@ package com.zchaos.zswt.internal;
 
 import org.eclipse.swt.widgets.Shell;
 
-import com.zchaos.zface.api.ZIFrame;
+import com.zchaos.ziface.ZIFrame;
 import com.zchaos.zswt.core.ZISWTContainer;
 import com.zchaos.zswt.util.ZSWTUtils;
 

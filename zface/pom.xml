@@ -15,5 +15,13 @@
 			<groupId>zutil</groupId>
 			<artifactId>zutil</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>ziface</groupId>
+			<artifactId>ziface</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>zswing</groupId>
+			<artifactId>zswing</artifactId>
+		</dependency>
 	</dependencies>
 </project>
