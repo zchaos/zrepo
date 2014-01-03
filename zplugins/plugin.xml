@@ -25,12 +25,54 @@
                id="com.zchaos.zplugins.core.actions.SampleAction">
          </action>
       </actionSet>
+      <actionSet
+            id="org.zchaos.zplugins.actionset.bookmark.add"
+            label="Quick Add Bookmark 1"
+            visible="true">
+         <action
+               class="com.zchaos.zplugins.internal.qbookmark.QuickAddBookmarkActionHandler"
+               definitionId="org.zchaos.zplugins.bookmark.add2"
+               id="org.zchaos.zplugins.action.bookmark.add2"
+               label="Quick Add Bookmark 2">
+         </action>
+      </actionSet>
    </extension>
    <extension
          point="org.eclipse.ui.startup">
       <startup
             class="com.zchaos.zplugins.core.startup.DependenciesSortStartup">
       </startup>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="org.eclipse.ui.category.navigate"
+            defaultHandler="com.zchaos.zplugins.internal.qbookmark.QuickAddBookmarkCommandHandler"
+            description="Quick Add Bookmark 1"
+            id="org.zchaos.zplugins.bookmark.add1"
+            name="Quick Add Bookmark 1">
+      </command>
+      <command
+            defaultHandler="com.zchaos.zplugins.internal.qbookmark.QuickAddBookmarkCommandHandler"
+            description="Quick Add Bookmark 2"
+            id="org.zchaos.zplugins.bookmark.add2"
+            name="Quick Add Bookmark 2">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="org.zchaos.zplugins.bookmark.add1"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="Fn+1">
+      </key>
+      <key
+            commandId="org.zchaos.zplugins.bookmark.add2"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="Fn+1">
+      </key>
    </extension>
 
 </plugin>

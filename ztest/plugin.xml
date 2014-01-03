@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="org.eclipse.ui.category.navigate"
+            defaultHandler="com.zchaos.ztest.example.qbookmark.QuickBookmarkAddCommandHandler"
+            id="com.zchaos.ztest.bookmark.add1"
+            name="Quick Add Bookmark 1">
+      </command>
+      <command
+            categoryId="org.eclipse.ui.category.navigate"
+            defaultHandler="com.zchaos.ztest.example.qbookmark.QuickBookmarkAddCommandHandler"
+            id="com.zchaos.ztest.bookmark.add2"
+            name="Quick Add Bookmark 2">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="com.zchaos.ztest.actionsets.bookmark.add"
+            label="Quick Add Bookmark"
+            visible="true">
+         <action
+               class="com.zchaos.ztest.example.qbookmark.QuickBookmarkAddActionHandler"
+               definitionId="com.zchaos.ztest.bookmark.add2"
+               id="com.zchaos.ztest.action.bookmark.add2"
+               label="Quick Add Bookmark 2"
+               style="push">
+         </action>
+      </actionSet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="com.zchaos.ztest.bookmark.add1"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="Ctrl+1">
+      </key>
+      <key
+            commandId="com.zchaos.ztest.bookmark.add2"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="Ctrl+2">
+      </key>
+   </extension>
+
+</plugin>

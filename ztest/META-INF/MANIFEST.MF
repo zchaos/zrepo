@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ztest
+Bundle-SymbolicName: ztest;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Export-Package: com.zchaos.ztest.example.swing.table,
+ com.zchaos.ztest.example.swt.frame,
+ com.zchaos.ztest.example.swt.shell,
+ com.zchaos.ztest.example.swt.table,
+ test
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.ui.ide,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources
