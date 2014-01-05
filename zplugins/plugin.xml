@@ -27,7 +27,7 @@
       </actionSet>
       <actionSet
             id="org.zchaos.zplugins.actionset.bookmark.add"
-            label="Quick Add Bookmark 1"
+            label="Quick Add Bookmark"
             visible="true">
          <action
                class="com.zchaos.zplugins.internal.qbookmark.QuickAddBookmarkActionHandler"
