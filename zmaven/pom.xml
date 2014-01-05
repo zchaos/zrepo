@@ -11,6 +11,7 @@
 		<version-poi>3.9</version-poi>
 		<version-swt>4.3.1</version-swt>
 		<version-zdependencies>0.0.1-SNAPSHOT</version-zdependencies>
+		<version-logback>1.0.13</version-logback>
 	</properties>
 
 	<dependencies>
@@ -18,6 +19,27 @@
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
+			<!-- log -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>1.7.5</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-core</artifactId>
+				<version>${version-logback}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${version-logback}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-access</artifactId>
+				<version>${version-logback}</version>
+			</dependency>
 			<!-- poi -->
 			<dependency>
 				<groupId>org.apache.poi</groupId>
