@@ -28,29 +28,62 @@ public class SSQTicketExcelReader {
 	 * @return
 	 * @throws IOException 
 	 */
-	public static DataGrid getSSQData() throws IOException {
+	public static DataGrid getSSQData() {
 		String path = "/data/ssq/ssq.xlsx";
-		Workbook workBook = ExcelUtils.createWorkBook(path, SSQTicketExcelReader.class);
-		DataGridDynamic dataGrid = new DataGridDynamic();
+		return getSSQData(path, null);
+	}
 
-		int col = 0;
-		DataGridHeadImpl head = new DataGridHeadImpl(8);
-		head.addCell(col++, new DataGridHeadCellImpl("期号"));
-		head.addCell(col++, new DataGridHeadCellImpl("红球1"));
-		head.addCell(col++, new DataGridHeadCellImpl("红球2"));
-		head.addCell(col++, new DataGridHeadCellImpl("红球3"));
-		head.addCell(col++, new DataGridHeadCellImpl("红球4"));
-		head.addCell(col++, new DataGridHeadCellImpl("红球5"));
-		head.addCell(col++, new DataGridHeadCellImpl("红球6"));
-		head.addCell(col++, new DataGridHeadCellImpl("篮球"));
-		dataGrid.setTopHead(head);
+	public static DataGrid getSSQData(String path, String sheetName) {
+		try {
+			Workbook workBook = ExcelUtils.createWorkBook(path, SSQTicketExcelReader.class);
+			DataGridDynamic dataGrid = new DataGridDynamic();
 
-		int len = workBook.getNumberOfSheets();
-		for (int i = 0; i < len; i++) {
-			Sheet sheet = workBook.getSheetAt(i);
-			sheet2DataGrid(dataGrid, sheet);
+			int col = 0;
+			DataGridHeadImpl head = new DataGridHeadImpl(8);
+			head.addCell(col++, new DataGridHeadCellImpl("期号"));
+			head.addCell(col++, new DataGridHeadCellImpl("红球1"));
+			head.addCell(col++, new DataGridHeadCellImpl("红球2"));
+			head.addCell(col++, new DataGridHeadCellImpl("红球3"));
+			head.addCell(col++, new DataGridHeadCellImpl("红球4"));
+			head.addCell(col++, new DataGridHeadCellImpl("红球5"));
+			head.addCell(col++, new DataGridHeadCellImpl("红球6"));
+			head.addCell(col++, new DataGridHeadCellImpl("篮球"));
+			dataGrid.setTopHead(head);
+
+			int len = workBook.getNumberOfSheets();
+			for (int i = 0; i < len; i++) {
+				Sheet sheet = workBook.getSheetAt(i);
+
+				if (StringUtils.isEmpty(sheetName) || StringUtils.equalsIgnoreCase(sheetName, sheet.getSheetName())) {
+					sheet2DataGrid(dataGrid, sheet);
+				}
+			}
+			return toFixed(dataGrid);
 		}
-		return toFixed(dataGrid);
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	/**
+	 * 获得某一年的数据
+	 * @param year
+	 * @return
+	 */
+	public static DataGrid getSSQData(int year) {
+		try {
+			String yearPath = "/data/ssq/ssq-" + year + ".xlsx";
+			if (ExcelUtils.exist(yearPath, SSQTicketExcelReader.class)) {
+				return getSSQData(yearPath, null);
+			}
+			else {
+				String path = "/data/ssq/ssq.xlsx";
+				return getSSQData(path, String.valueOf(year));
+			}
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	private static void sheet2DataGrid(DataGridDynamic dataGrid, Sheet sheet) throws IOException {

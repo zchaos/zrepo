@@ -57,6 +57,19 @@ public class ExcelUtils {
 		}
 	}
 
+	public static boolean exist(String path, Class<?> clazz) throws IOException {
+		InputStream in = clazz.getResourceAsStream(path);
+		if (in == null) {
+			return false;
+		}
+		try {
+			return true;
+		}
+		finally {
+			in.close();
+		}
+	}
+
 	public static void checkExt(String ext) throws IOException {
 		if (!StringUtils.equalsIgnoreCase(ext, EXT_XLS) && !StringUtils.equalsIgnoreCase(ext, EXT_XLSX)) {
 			throw new IllegalArgumentException("不支持除：" + EXT_XLS + "/" + EXT_XLSX + "以外的文件格式!!!");
