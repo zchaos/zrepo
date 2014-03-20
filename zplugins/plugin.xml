@@ -16,13 +16,14 @@
             </separator>
          </menu>
          <action
-               label="&amp;Sample Action"
-               icon="icons/sample.gif"
                class="com.zchaos.zplugins.core.actions.SampleAction"
-               tooltip="Zplugins"
+               icon="icons/sample.gif"
+               id="com.zchaos.zplugins.core.actions.SampleAction"
+               label="&amp;Sample Action"
                menubarPath="zchaosMenu/zchaosGroup"
+               style="pulldown"
                toolbarPath="zchaosGroup"
-               id="com.zchaos.zplugins.core.actions.SampleAction">
+               tooltip="Zplugins">
          </action>
       </actionSet>
       <actionSet

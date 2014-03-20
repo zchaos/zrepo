@@ -1,9 +1,16 @@
 package com.zchaos.zplugins.core.actions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkbenchWindowActionDelegate;
+import org.eclipse.ui.IWorkbenchWindowPulldownDelegate;
 
 import com.zchaos.zplugins.internal.dependencies.sort.DependenciesSort;
 
@@ -15,9 +22,16 @@ import com.zchaos.zplugins.internal.dependencies.sort.DependenciesSort;
  * 
  * @see IWorkbenchWindowActionDelegate
  */
-public class SampleAction implements IWorkbenchWindowActionDelegate {
+public class SampleAction implements IWorkbenchWindowPulldownDelegate {
 	private IWorkbenchWindow window;
+	
+	private Menu menu;
 
+	private IAction configAction;
+	
+	private IAction dependenciesSortAction;
+	
+	private List<IAction> actionList = new ArrayList<IAction>();
 	/**
 	 * The constructor.
 	 */
@@ -31,8 +45,11 @@ public class SampleAction implements IWorkbenchWindowActionDelegate {
 	 * @see IWorkbenchWindowActionDelegate#run
 	 */
 	public void run(IAction action) {
-		DependenciesSort ds = new DependenciesSort();
-		ds.sort();
+		int size = actionList.size();
+		for (int i = 0; i < size; i++) {
+			IAction ac = actionList.get(i);
+			ac.run();
+		}
 	}
 
 	/**
@@ -62,5 +79,25 @@ public class SampleAction implements IWorkbenchWindowActionDelegate {
 	 */
 	public void init(IWorkbenchWindow window) {
 		this.window = window;
+		configAction = new ConfigurationAction("zchaos configurate");
+		dependenciesSortAction = new DependenciesSortAction("zchaos dependencies sort");
+
+		actionList.add(configAction);
+		actionList.add(dependenciesSortAction);
+	}
+	
+	@Override
+	public Menu getMenu(Control parent) {
+		if (menu == null) {
+			MenuManager mm = new MenuManager();
+			menu = mm.createContextMenu(parent);
+
+			int size = actionList.size();
+			for (int i = 0; i < size; i++) {
+				IAction ac = actionList.get(i);
+				mm.add(ac);
+			}
+		}
+		return menu;
 	}
 }
