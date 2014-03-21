@@ -1,4 +1,4 @@
-package com.zchaos.zplugins.core.actions;
+package com.zchaos.zplugins.ui.actions;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.swt.widgets.Display;

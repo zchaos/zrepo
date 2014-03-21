@@ -13,6 +13,8 @@ import org.eclipse.ui.IWorkbenchWindowActionDelegate;
 import org.eclipse.ui.IWorkbenchWindowPulldownDelegate;
 
 import com.zchaos.zplugins.internal.dependencies.sort.DependenciesSort;
+import com.zchaos.zplugins.ui.actions.ConfigurationAction;
+import com.zchaos.zplugins.ui.actions.DependenciesSortAction;
 
 /**
  * Our sample action implements workbench action delegate. The action proxy will
