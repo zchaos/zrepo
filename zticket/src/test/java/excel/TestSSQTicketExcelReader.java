@@ -1,13 +1,14 @@
 package excel;
 
 import java.io.IOException;
+import java.util.List;
 
-import com.zchaos.zutil.datagrid.DataGrid;
-import com.zchaos.zutil.datagrid.util.DataGridUtil;
+import data.DataReader;
+import data.ssq.SSQDataReader;
 
 public class TestSSQTicketExcelReader {
 	public static void main(String[] args) throws IOException {
-		DataGrid dataGrid = SSQTicketExcelReader.getSSQData();
-		DataGridUtil.printDataGrid(dataGrid);
+		List<List<Integer>> datalist = SSQDataReader.getData();
+		DataReader.printData(datalist);
 	}
 }
