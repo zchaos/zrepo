@@ -26,17 +26,6 @@
                tooltip="Zplugins">
          </action>
       </actionSet>
-      <actionSet
-            id="org.zchaos.zplugins.actionset.bookmark.add"
-            label="Quick Add Bookmark"
-            visible="true">
-         <action
-               class="com.zchaos.zplugins.internal.qbookmark.QuickAddBookmarkActionHandler"
-               definitionId="org.zchaos.zplugins.bookmark.add2"
-               id="org.zchaos.zplugins.action.bookmark.add2"
-               label="Quick Add Bookmark 2">
-         </action>
-      </actionSet>
    </extension>
    <extension
          point="org.eclipse.ui.startup">
@@ -53,12 +42,6 @@
             id="org.zchaos.zplugins.bookmark.add1"
             name="Quick Add Bookmark 1">
       </command>
-      <command
-            defaultHandler="com.zchaos.zplugins.internal.qbookmark.QuickAddBookmarkCommandHandler"
-            description="Quick Add Bookmark 2"
-            id="org.zchaos.zplugins.bookmark.add2"
-            name="Quick Add Bookmark 2">
-      </command>
    </extension>
    <extension
          point="org.eclipse.ui.bindings">
@@ -68,12 +51,20 @@
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="Fn+1">
       </key>
-      <key
-            commandId="org.zchaos.zplugins.bookmark.add2"
-            contextId="org.eclipse.ui.contexts.window"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            sequence="Fn+1">
-      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="com.zchaos.zplugins.perferences.PerferencesPage"
+            id="zplugins.zchaos.perferences"
+            name="zchaos">
+      </page>
+      <page
+            category="zplugins.zchaos.perferences"
+            class="com.zchaos.zplugins.perferences.PerferencesDetailPage"
+            id="zplugins.zchaos.perferences.detail"
+            name="zchaos.detail">
+      </page>
    </extension>
 
 </plugin>

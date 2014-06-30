@@ -7,19 +7,25 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
+import com.zchaos.zplugins.ui.dialogs.ConfigurationDialog;
+
 public class ConfigurationAction extends Action {
 	public ConfigurationAction(String text) {
 		super(text);
 	}
-	
+
 	public void run() {
 		Display.getDefault().syncExec(new Runnable() {
 			public void run() {
 				final Shell shell = new Shell(PlatformUI.getWorkbench().getDisplay());
-				MessageDialog waitDialg = new MessageDialog(shell, "aaaaaaa", null, "bbbbbb", MessageDialog.INFORMATION,
-						new String[] { IDialogConstants.OK_LABEL }, 0);
-				waitDialg.setBlockOnOpen(false);
-				waitDialg.open();
+				//				MessageDialog waitDialg = new MessageDialog(shell, "aaaaaaa", null, "bbbbbb", MessageDialog.INFORMATION,
+				//						new String[] { IDialogConstants.OK_LABEL }, 0);
+				//				waitDialg.setBlockOnOpen(false);
+				//				waitDialg.open();
+
+				ConfigurationDialog dialog = new ConfigurationDialog(shell);
+				dialog.create();
+				dialog.open();
 			}
 		});
 	}
