@@ -9,9 +9,9 @@ import analyse.impl.DataAnalyseOneTotalProbability;
 
 public class TesDataAnalyseOneTotalProbability {
 	public static void main(String[] args) {
-		double[] datas = SSQDataReader.getBlueDataArray();
-		DataAnalyseOneTotalProbability analyse = new DataAnalyseOneTotalProbability(
-				0);
+		List<Integer> datalist = SSQDataReader.getBlueDataList();
+		double[] datas = AnalyseUtils.trans2double(datalist);
+		DataAnalyseOneTotalProbability analyse = new DataAnalyseOneTotalProbability();
 		List<DataAnalyseResult> list = analyse.anayse(datas);
 		AnalyseUtils.print(list);
 	}

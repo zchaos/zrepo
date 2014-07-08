@@ -20,6 +20,7 @@ public class SSQDataReader {
 	 * 获得蓝球
 	 * 
 	 * @param year
+	 *            小于等于0,返回所有数据
 	 * @return
 	 */
 	public static List<Integer> getBlueDataList(int year) {
@@ -35,6 +36,10 @@ public class SSQDataReader {
 			}
 		}
 		return blueData;
+	}
+	
+	public static List<Integer> getBlueDataList() {
+		return getBlueDataList(-1);
 	}
 
 	/**

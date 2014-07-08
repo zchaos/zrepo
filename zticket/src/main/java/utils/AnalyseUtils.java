@@ -91,4 +91,13 @@ public class AnalyseUtils {
 		}
 		return rs;
 	}
+
+	public static double[] trans2double(List<Integer> datas) {
+		int count = datas.size();
+		double[] rs = new double[count];
+		for (int i = 0; i < count; i++) {
+			rs[i] = datas.get(i).doubleValue();
+		}
+		return rs;
+	}
 }
