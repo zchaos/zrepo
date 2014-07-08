@@ -6,7 +6,6 @@ import org.eclipse.core.commands.ExecutionException;
 
 public class QuickAddBookmarkCommandHandler extends AbstractHandler {
 
-	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		System.out.println("QuickAddBookmarkCommandHandler");
 		return null;

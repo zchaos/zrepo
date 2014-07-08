@@ -27,11 +27,9 @@ public class FrameDemo {
 		JButton btnClose = new JButton("close");
 		btnClose.addActionListener(new ActionListener() {
 
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				display.syncExec(new Runnable() {
 
-					@Override
 					public void run() {
 						shell.close();
 					}

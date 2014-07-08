@@ -24,7 +24,6 @@ public class DataAnalyseOneTotalProbability implements DataAnalyse {
 		this.limit = limit;
 	}
 
-	@Override
 	public List<DataAnalyseResult> anayse(double[] datas) {
 		Map<Double, Double> result = AlgorithmUtils.probabilityTotal(datas,
 				limit);

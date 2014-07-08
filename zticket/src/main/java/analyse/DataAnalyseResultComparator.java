@@ -7,7 +7,6 @@ public class DataAnalyseResultComparator implements
 
 	public static final DataAnalyseResultComparator COMPARATOR = new DataAnalyseResultComparator();
 
-	@Override
 	public int compare(DataAnalyseResult o1, DataAnalyseResult o2) {
 		double m = o1.getValue() - o2.getValue();
 		return m == 0 ? 0 : m > 0 ? -1 : 1;// 降序

@@ -16,42 +16,34 @@ public abstract class DataGridAbstract implements DataGrid {
 
 	private DataGridHead bottomHead;
 
-	@Override
 	public DataGridHead getTopHead() {
 		return topHead;
 	}
 
-	@Override
 	public DataGridHead getBottomHead() {
 		return bottomHead;
 	}
 
-	@Override
 	public DataGridHead getLeftHead() {
 		return leftHead;
 	}
 
-	@Override
 	public DataGridHead getRightHead() {
 		return rightHead;
 	}
 
-	@Override
 	public void setTopHead(DataGridHead head) {
 		this.topHead = head;
 	}
 
-	@Override
 	public void setBottomHead(DataGridHead head) {
 		this.bottomHead = head;
 	}
 
-	@Override
 	public void setLeftHead(DataGridHead head) {
 		this.leftHead = head;
 	}
 
-	@Override
 	public void setRightHead(DataGridHead head) {
 		this.rightHead = head;
 	}

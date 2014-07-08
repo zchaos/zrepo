@@ -88,7 +88,6 @@ public class SampleAction implements IWorkbenchWindowPulldownDelegate {
 		actionList.add(dependenciesSortAction);
 	}
 	
-	@Override
 	public Menu getMenu(Control parent) {
 		if (menu == null) {
 			MenuManager mm = new MenuManager();

@@ -8,7 +8,6 @@ import com.zchaos.zplugins.internal.dependencies.sort.DependenciesSort;
 
 public class DependenciesSortStartup implements IStartup {
 
-	@Override
 	public void earlyStartup() {
 		final IWorkbench workbench = PlatformUI.getWorkbench();
 		workbench.getDisplay().asyncExec(new Runnable() {

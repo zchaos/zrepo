@@ -14,48 +14,40 @@ public class ConfigItemsLoader implements IConfigItemsLoader {
 		ConfigItems result = new ConfigItems();
 		result.addConfigItem(new IConfigItem() {
 
-			@Override
 			public IStatus update() {
 				// TODO Auto-generated method stub
 				return null;
 			}
 
-			@Override
 			public String getDescription() {
 				// TODO Auto-generated method stub
 				return "321";
 			}
 
-			@Override
 			public boolean canUpdate() {
 				// TODO Auto-generated method stub
 				return true;
 			}
 
-			@Override
 			public boolean isLoaded() {
 				// TODO Auto-generated method stub
 				return true;
 			}
 
-			@Override
 			public boolean isForceToUpdate() {
 				// TODO Auto-generated method stub
 				return false;
 			}
 
-			@Override
 			public int getType() {
 				// TODO Auto-generated method stub
 				return 0;
 			}
 
-			@Override
 			public String getId() {
 				return "123";
 			}
 
-			@Override
 			public IStatus doSync() {
 				return null;
 			}

@@ -6,7 +6,6 @@ import org.eclipse.ui.internal.handlers.WorkbenchWindowHandlerDelegate;
 
 public class QuickBookmarkAddActionHandler extends WorkbenchWindowHandlerDelegate {
 
-	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		System.out.println("QuickBookmarkAddActionHandler");
 		return null;

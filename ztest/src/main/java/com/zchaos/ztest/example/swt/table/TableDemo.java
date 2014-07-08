@@ -92,7 +92,6 @@ public class TableDemo {
 		MenuItem menuitem1 = new MenuItem(menu1, SWT.PUSH);
 		menuitem1.setText("删除");
 		menuitem1.addListener(SWT.Selection, new Listener() {
-			@Override
 			public void handleEvent(Event event) {
 				MessageBox mbox = new MessageBox(shell, SWT.DIALOG_TRIM | SWT.ICON_INFORMATION);
 				mbox.setText("删除成功");
@@ -133,7 +132,6 @@ public class TableDemo {
 						editor.setEditor(spiner, tableitem, col1);
 						spiner.addModifyListener(new ModifyListener() {
 
-							@Override
 							public void modifyText(ModifyEvent e) {
 								tableitem.setText(col1, String.valueOf(spiner.getSelection()));
 							}
@@ -161,7 +159,6 @@ public class TableDemo {
 						editor.setEditor(txt, tableitem, col1);
 						txt.addModifyListener(new ModifyListener() {
 
-							@Override
 							public void modifyText(ModifyEvent e) {
 								tableitem.setText(col1, txt.getText());
 

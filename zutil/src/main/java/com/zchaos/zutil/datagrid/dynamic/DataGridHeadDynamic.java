@@ -15,7 +15,6 @@ public class DataGridHeadDynamic implements DataGridHead {
 		return cells.get(index);
 	}
 
-	@Override
 	public int size() {
 		return cells.size();
 	}
