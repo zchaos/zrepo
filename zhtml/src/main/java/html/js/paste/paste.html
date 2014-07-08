@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta http-equiv="Pragma" content="no-cache"/>
+		<meta http-equiv="Cache-Control" content="no-cache"/>
+		<meta http-equiv="Expires" content="0"/>
+		<meta name="sz-context-path" content="/succezbi"/>
+		<title>测试不同浏览器的粘贴</title>
+		<script src="/soft/source/jquery/jquery-1.7.2.js"></script>
+	</head>
+	<body>
+		<input id="pasteelement" />
+		<script>
+			var $element = $("#pasteelement");
+			function afterPasteEvent(){
+				alert($element.val());
+			}
+			$element.bind("input",afterPasteEvent);
+		</script>
+	</body>
+</html>
