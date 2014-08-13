@@ -13,5 +13,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="lib/blancosqlformatter-0.1.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
